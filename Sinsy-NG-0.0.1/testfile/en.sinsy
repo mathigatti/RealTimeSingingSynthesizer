@@ -1,0 +1,8 @@
+resample 48000
+voice en
+note 2000 hello 60 0 0 0 0 0
+note 2000 world 60 0 0 0 0 0
+note 480 i 60 0 0 0 0 0
+note 480 am 60 0 0 0 0 0
+note 2000 gloomy 60 0 0 0 0 0
+note 2000 ghost 60 0 0 0 0 0

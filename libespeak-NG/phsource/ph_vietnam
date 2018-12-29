@@ -1,0 +1,458 @@
+ 
+//====================================================
+//  Vietnamese Phonemes
+//====================================================
+
+
+phoneme 1   //  ngang tone: level
+  stress
+  Tone(34,36, envelope/p_level, NULL) // 28 29
+endphoneme
+
+
+phoneme 2   //  huyền tone: low falling
+  stress
+  Tone(30, 8, envelope/p_fall, NULL) //20 8
+endphoneme
+
+
+phoneme 3   //  sắc Tone(rising
+  stress
+  Tone(30, 60, envelope/p_rise, NULL) // 30 60
+endphoneme
+
+
+phoneme 4   //  hỏi Tone(curve (dipping rising)
+  stress
+  Tone(10, 55, envelope/p_fallrise, NULL) //33 31
+endphoneme
+
+
+phoneme 5   //  ngã tone: broken (creaking rising)
+  stress
+  Tone(28,58,envelope/p_214, envelope/vi_5amp) // 28,58 20 80
+endphoneme
+
+
+phoneme 6   //  nặng Tone(drop  (constricted)
+  stress
+  //length 150 // ignore because it make too short sound 75  // reduce the length of the vowel
+  Tone(25, 60, envelope/p_512, envelope/vi_6amp) //40 20
+endphoneme
+
+
+phoneme 7   //  Tone(1 (ngang) at end of clause
+  stress
+  Tone(40,  35, envelope/p_fall, NULL) //40 20
+endphoneme
+
+
+
+// Vowels
+//=======
+
+
+phoneme a
+  vwl starttype #@ endtype #@
+  	length 140
+	  FMT(vowel/a_4)  //a_4)
+endphoneme
+
+phoneme a:
+  vwl starttype #a endtype #a
+  IF nextPh(n^) OR nextPh(c) THEN
+  length 100
+  ELSE
+  length 140 //280
+  ENDIF
+    FMT(vowel/a_8)
+endphoneme
+
+
+phoneme E
+  vwl starttype #e endtype #e
+  length 140
+  FMT(vowel/e_e)   //ee_3)
+endphoneme
+
+phoneme e
+  vwl starttype #e endtype #e
+  length 140
+  FMT(vowel/e)
+endphoneme
+
+
+phoneme i
+  vwl  starttype #i  endtype #i
+    IfNextVowelAppend(;)
+  IF prevPhW(w) THEN
+    VowelStart(w/wi)
+  ENDIF
+  IF nextPh(n^) OR nextPh(c) THEN
+  length 100
+  FMT(vnasal/ii_n)
+  ELSE
+  length 140
+FMT(vowel/i_4)
+ENDIF
+endphoneme
+
+
+phoneme O
+  vwl starttype #o endtype #o
+    IF nextPh(kh) OR nextPh(N) THEN 
+	length 80
+	ELSE
+	length 140
+	ENDIF
+    FMT(vdiph2/o_oo) //vowel/oo)
+endphoneme
+
+phoneme o
+  vwl starttype #o endtype #o
+  IF nextPh(kh) OR nextPh(N) THEN
+	length 110
+	ELSE
+	length 140
+	ENDIF
+  FMT(vowel/o)  // o_2)
+endphoneme
+
+
+phoneme u
+  vwl starttype #u endtype #u
+  IF nextPh(kh) OR nextPh(N) THEN // hear as ung sound
+	length 120
+	ELSE
+	length 140
+	ENDIF
+  FMT(vnasal/u_n,60) //vowel/u_5)
+endphoneme
+
+phoneme y
+  vwl starttype #u endtype #u
+  IF nextPh(kh) OR nextPh(N) THEN
+	length 120
+	ELSE
+	length 180
+	ENDIF
+  FMT(vowel/u#_5)
+endphoneme
+
+
+
+phoneme @
+  vwl  starttype #@  endtype #a
+ IF nextPh(kh) OR nextPh(N) OR nextPh(n^) OR nextPh(c) THEN
+	length 120
+	ELSE
+	length 140
+	ENDIF
+  FMT(vowel/V)   //vowel/@_2)
+endphoneme
+
+
+phoneme @:
+  vwl  starttype #@  endtype #@
+  length 140
+  FMT(vowel/@_2)
+endphoneme
+
+
+
+// Diphthongs
+//===========
+
+phoneme aI
+  vwl starttype #a endtype #i
+  length 140 //250
+  FMT(vdiph/&i_2)
+endphoneme
+
+
+phoneme a:I
+  vwl starttype #a endtype #i
+  length 200  //250
+  FMT(vdiph/ai)
+endphoneme
+
+
+phoneme @I
+  vwl starttype #@ endtype #i
+  length 200 //250
+  FMT(vdiph/@i)
+endphoneme
+
+
+phoneme @:I
+  vwl starttype #@ endtype #i
+  length 200 //250
+  FMT(vdiph/y#i)
+endphoneme
+
+
+phoneme eI
+  vwl starttype #e endtype #i
+  length 140
+  FMT(vdiph/ei)
+endphoneme
+
+
+phoneme EI
+  vwl starttype #e endtype #i
+  length 140
+  FMT(vdiph/eei)
+endphoneme
+
+
+phoneme OI
+  vwl starttype #o endtype #i
+  length 200
+  FMT(vdiph/ooi_4)
+endphoneme
+
+
+phoneme oI
+  vwl starttype #o endtype #i
+  length 200
+  FMT(vdiph/oi)
+endphoneme
+
+
+phoneme uI
+  vwl starttype #u endtype #i
+  length 200
+  FMT(vdiph/ui)
+endphoneme
+
+phoneme yI
+  vwl starttype #u endtype #i
+  length 200
+  FMT(vdiph/u-i)
+endphoneme
+
+
+
+
+phoneme aU
+  vwl starttype #a endtype #u
+  length 150
+  FMT(vdiph/aau_4)
+endphoneme
+
+
+phoneme a:U
+  vwl starttype #a endtype #u
+  length 150 //270
+  FMT(vdiph/au)
+endphoneme
+
+
+phoneme eU
+  vwl starttype #e endtype #u
+  length 150
+  FMT(vdiph/eu)
+endphoneme
+
+
+phoneme EU
+  vwl starttype #e endtype #u
+  length 150
+  FMT(vdiph/eeu)
+endphoneme
+
+phoneme iU
+  vwl starttype #i endtype #u
+  length 140
+  FMT(vdiph2/iu)
+endphoneme
+
+phoneme @U
+  vwl  starttype #@  endtype #u
+  length 140
+  FMT(vdiph/@u_3)
+endphoneme
+
+phoneme @:U
+  vwl  starttype #@  endtype #u
+  length 140
+  FMT(vdiph/@u)
+endphoneme
+
+
+
+phoneme i@
+  vwl  starttype #i  endtype #@
+  length 140
+  FMT(vdiph2/ii@_3)
+endphoneme
+
+phoneme y@
+  vwl  starttype #i  endtype #@
+  length 140
+  FMT(vdiph2/y-y#)
+endphoneme
+
+phoneme u@
+  vwl  starttype #u  endtype #@
+  length 100 //200
+  FMT(vdiph2/uu@)
+endphoneme
+
+// Addition Dipthongs
+
+phoneme o# // ông
+  vwl  starttype #o  endtype #o
+  length 140
+  FMT(vnasal/a#u_n)
+endphoneme
+
+phoneme O# // ong
+  vwl  starttype #o  endtype #o
+  length 140
+  FMT(vnasal/&u_n)
+endphoneme
+
+
+phoneme o@
+  vwl  starttype #o endtype #a
+  length 140
+  FMT(vdiph2/oa)
+endphoneme
+
+phoneme o&
+  vwl  starttype #o endtype #o
+  length 140
+  FMT(vietnam/oe)
+endphoneme
+
+phoneme iE // iê : viết, giệc
+  vwl  starttype #i  endtype #e
+  length 140
+  FMT(vietnam/ie_2)
+endphoneme
+
+phoneme Oi // oai sound
+  vwl  starttype #o  endtype #i
+  length 140
+  FMT(vdiph/ooi_3)
+endphoneme
+
+// Vowel and Dipthong for south dialect
+
+phoneme O- // ôi southern sound
+  vwl  starttype #o  endtype #i
+  length 150
+  FMT(vnasal/oi_n)
+endphoneme
+
+phoneme @- // ơi southern sound
+  vwl  starttype #o  endtype #i
+  length 150
+  FMT(vdiph/@i_3)
+endphoneme
+
+phoneme u- // u southern sound
+  vwl  starttype #u  endtype #u
+  length 150
+  FMT(vowel/u_3,70)
+endphoneme
+
+
+
+phoneme kh
+  vls vel frc
+  lengthmod 3
+  Vowelin f1=0  f2=2300 200 400  f3=200 80 len=30
+  Vowelout f1=0 f2=2300 300 400  f3=200 80  rms=20
+    WAV(vietnam/_c,5)  //ufric/x, 50)
+endphoneme
+
+
+phoneme l
+  liquid
+  Vowelin f1=0  f2=1700 -300 300  f3=-100 80 len=15
+  //lengthmod 7
+   //IF nextPh(isNotVowel) THEN
+   // ChangePhoneme(l/2)
+  //ENDIF
+  //CALL vowelstart_l
+
+  FMT(l/l_vi)
+endphoneme
+
+phoneme t
+  vls alv stp
+  //voicingswitch d
+  lengthmod 2
+  Vowelin f1=0  f2=1700 -300 300  f3=-100 80 len=15
+  Vowelout f1=0 f2=1700 -300 250  f3=-100 80  rms=20
+
+  WAV(vietnam/th, 50)
+endphoneme
+
+phoneme cr
+  vls pla afr sib
+  //voicingswitch dZ
+  lengthmod 2
+  Vowelin f1=0  f2=2300 200 400  f3=-100 80 len=15
+
+  
+  WAV(vietnam/tr,10)
+endphoneme
+
+phoneme d_
+  vcd alv stp
+    //	lengthmod 5
+	ipa ɗ
+ Vowelin f1=1  f2=1700 -300 300  f3=-100 80 len=15
+  Vowelout f1=2 f2=1700 -300 300  f3=-100 80 brk len=30
+WAV(vietnam/dd)
+ endphoneme
+ 
+ phoneme c
+  vls pal stp pzd
+  //voicingswitch J
+  lengthmod 2
+  length 2
+    Vowelin f1=0  f2=2700 400 600  f3=300 80 len=15 brk
+  Vowelout f1=1  f2=2700 400 600  f3=200 70 len=15 colr=1
+
+  
+  WAV(vietnam/ch,5)
+endphoneme
+
+
+phoneme p
+  vls blb stp
+    lengthmod 2
+  Vowelin  f1=0  f2=1000 -50 -100  f3=-200 80 amp=11
+  Vowelout f1=0  f2=1000 -500 -350  f3=-300 80 rms=22
+
+    WAV(ustop/p_unasp_,10)
+  
+endphoneme
+
+phoneme n
+  vcd alv nas
+  Vowelin  f1=0  f2=1000 -50 -100  f3=-200 80 amp=11 brk len=15
+  Vowelout f1=2 f2=1700 -300 250  f3=-100 80  rms=20 brk len=15
+    lengthmod 4
+	length 75
+FMT(n/nr_)
+endphoneme
+
+phoneme t[        // dental variant of /t/
+  vls dnt stp
+  voicingswitch d[
+  lengthmod 2
+  length 5
+  Vowelin f1=1  f2=1500 -250 250  f3=-100 80  amp=16 len=15
+  Vowelout f1=0 f2=1500 -300 250  f3=-100 80  rms=20 len=15
+
+  IF nextPh(isPause2) THEN
+    WAV(ustop/t_unasp2, 5)
+  ENDIF
+  WAV(ustop/t_hi, 70)
+endphoneme
+

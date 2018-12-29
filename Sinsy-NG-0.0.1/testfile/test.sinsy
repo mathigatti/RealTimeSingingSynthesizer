@@ -1,0 +1,33 @@
+voice fi
+resample 48000
+note 1920 do 60 0 0 0 0 0
+note 1920 re 62 0 0 0 0 0
+note 1920 mi 64 0 0 0 0 0
+note 1920 fa 65 0 0 0 0 0
+rest 480
+note 1920 sol 67 0 0 0 0 0
+note 1920 la 69 0 0 0 0 0
+note 1920 si 71 0 0 0 0 0
+note 1920 do 72 0 0 0 0 0
+rest 480
+note 1920 a 60 0 0 0 0 0
+note 1920 i 60 0 0 0 0 0
+note 1920 u 60 0 0 0 0 0
+note 1920 e 60 0 0 0 0 0
+note 1920 o 60 0 0 0 0 0
+# a i u e o works in Finnish
+rest 1920
+voice ja
+note 1920 あ 60 0 0 0 0 0
+note 1920 い 62 0 0 0 0 0
+note 1920 う 64 0 0 0 0 0
+note 1920 え 65 0 0 0 0 0
+note 1920 お 67 0 0 0 0 0
+# and in Japanese
+voice en
+note 1920 hello 60 0 0 0 0 0
+note 1920 this 62 0 0 0 0 0
+note 1920 is 64 0 0 0 0 0
+note 1920 a 65 0 0 0 0 0
+note 1920 test 67 0 0 0 0 0
+# and in english
