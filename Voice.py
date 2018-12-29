@@ -14,7 +14,7 @@ def renderizeVoice(outputName,lyrics,notes,durations,tempo,scale):
 
 	generateVoiceSpecification(lyrics,tempo,VOICE_XML_ORIGINAL,VOICE_XML_PROCESSED)
 
-	os.popen("LD_LIBRARY_PATH=/usr/lib /home/mathi/Desktop/MyBand/2.sound/synthesis/sinsy/Sinsy-NG-0.0.1/build/sinsyNG -m es -o " + 'output.wav' + " " + VOICE_XML_PROCESSED)
+	os.popen("LD_LIBRARY_PATH=/usr/lib synthesisSoftware/Sinsy-NG-0.0.1/build/sinsyNG -m es -o " + 'output.wav' + " " + VOICE_XML_PROCESSED)
 
 def tokenize(text):
 	textSyllables = cleanText(text)
