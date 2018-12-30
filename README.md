@@ -14,7 +14,7 @@ Software contained in synthesisSoftware must be installed.
 
 ## Usage
 
-You can use `main.py` script as a small usage example. 
+You can try `main.py` script as a small singing synthesis example.
 
 The usage is something like this
 ```
