@@ -26,4 +26,4 @@ For example
 python2 main.py example_audio "some lyrics to sing" 100
 ```
 
-You easely can modify main.py and add notes, duration, language and more as parameters.
+You can easely modify `main.py` and add notes, duration, language and more as parameters.
