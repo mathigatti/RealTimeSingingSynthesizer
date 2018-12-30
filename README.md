@@ -1,14 +1,16 @@
 # RealTimeSingingSynthesis
 Real time singing synthesis project made from sinsy-NG.
 
+## Requirements
+- python 2.7
+- musescore (It's used to convert midi to musicxml)
+
 ## Installation
 
 Software contained in synthesisSoftware must be installed. 
 
 - libespeag-NG (Install this first)
 - Sinsy-NG (Install this second)
-
-Both have installation instructions.
 
 ## Usage
 
