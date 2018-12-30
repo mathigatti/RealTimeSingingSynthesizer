@@ -12,14 +12,16 @@ Both have installation instructions.
 
 ## Usage
 
-You can modify main.py but by default its usage choosing notes, duration, language and so on. By default the usage is something like this
+You can use `main.py` script as a small usage example. 
 
+The usage is something like this
 ```
 python2 main.py OUTPUT_FILE_NAME_WITHOUT_THE_EXTENSION LYRICS TEMPO
 ```
 
 For example
-
 ```
 python2 main.py example_audio "some lyrics to sing" 100
 ```
+
+You easely can modify main.py and add notes, duration, language and more as parameters.
