@@ -21,16 +21,17 @@ All the parameters are optional, they contain a default value in case they are n
 - notes: The numerical value of notes in the scale, in C Major would be something like 0:C, 1:D, 2:E, 3:F and so on...
 The scale is C major by default, it's hardcoded in the main.py file and can be modified.
 
-- lyrics: The text where spaces delimit w
+- dur: The duration of each note in BPM (beats per minute)
 
-- dur: The BPM of each note
+- lyrics: The text to be synthesized. Each word is mapped to one note from the "dur" and "notes" parameters
 
-- lang: the language code, "es" for spanish and "en" for english.
-There are several languages supported, can check that here http://espeak.sourceforge.net/languages.html
+- lang: The language code, "es" for spanish and "en" for english
+There are several languages supported, You can check those [here](http://espeak.sourceforge.net/languages.html)
+
 
 - tempo: The tempo in BPM, 100 by default
 
-- file: the name of the output file
+- file: The name of the output file
 
 ### Usage examples
 1. All the default values are used generating a single note audio file which says "Ooh" in spanish.
