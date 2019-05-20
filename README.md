@@ -1,5 +1,9 @@
 # RealTimeSingingSynthesis
-Real time singing synthesis project made from sinsy-NG.
+Real time singing synthesis project made from sinsy-NG. The idea is to generate audio samples easily in order to use them for example in live coding performances.
+
+## Demo
+Here is a video demonstration using the program to synthesize samples and load them into the FoxDot live coding environment.
+[![IMAGE ALT TEXT HERE](http://img.youtube.com/vi/wvbV75Tw_24/0.jpg)](https://www.youtube.com/watch?v=wvbV75Tw_24)
 
 ## Requirements
 - python (Should work on 3 and 2.7 versions)
@@ -11,8 +15,6 @@ Software contained in synthesisSoftware must be installed.
 
 - libespeag-NG (Install this first)
 - Sinsy-NG (Install this second)
-
-[![IMAGE ALT TEXT HERE](http://img.youtube.com/vi/wvbV75Tw_24/0.jpg)](https://www.youtube.com/watch?v=wvbV75Tw_24)
 
 ## Usage
 
