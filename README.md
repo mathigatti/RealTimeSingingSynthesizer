@@ -26,8 +26,7 @@ The scale is C major by default, it's hardcoded in the main.py file and can be m
 - dur: The BPM of each note
 
 - lang: the language code, "es" for spanish and "en" for english.
-
-- There are several languages supported, can check that here http://espeak.sourceforge.net/languages.html
+There are several languages supported, can check that here http://espeak.sourceforge.net/languages.html
 
 - tempo: The tempo in BPM, 100 by default
 
