@@ -1,5 +1,5 @@
 # Live Coding Singing Synthesizer
-Real Time Singing Synthesizer project made from sinsy-NG. The idea is to generate audio samples easily which is something quite important for live coding performances.
+Real Time Singing Synthesizer project made from sinsy-NG. The idea was to generate vocal audio samples on real time easily for live coding performances.
 
 ## Demo
 Here is a video demonstration using the program to synthesize samples and load them into the FoxDot live coding environment.
