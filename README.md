@@ -12,6 +12,8 @@ Software contained in synthesisSoftware must be installed.
 - libespeag-NG (Install this first)
 - Sinsy-NG (Install this second)
 
+[![IMAGE ALT TEXT HERE](http://img.youtube.com/vi/wvbV75Tw_24/0.jpg)](https://www.youtube.com/watch?v=wvbV75Tw_24)
+
 ## Usage
 
 You can try `main.py` script as a small singing synthesis example. After running this an output wav file will be generated containing the specified vocals.
@@ -47,4 +49,3 @@ python main.py lyrics="hola hola hola" lang=es
 ```
 python main.py notes=0,0,2 lyrics="hello good morning" dur=1,1,2 lang=en file="output.wav" tempo=80
 ```
-
