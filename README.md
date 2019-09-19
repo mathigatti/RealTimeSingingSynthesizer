@@ -4,7 +4,7 @@ Real Time Singing Synthesizer project made from sinsy-NG. The idea was to genera
 ## Demo
 [Here](https://www.youtube.com/watch?v=wvbV75Tw_24) is a video demonstration using the program to synthesize samples and load them into the FoxDot live coding environment.
 
-[![IMAGE ALT TEXT HERE](http://img.youtube.com/vi/wvbV75Tw_24/0.jpg)](https://www.youtube.com/watch?v=wvbV75Tw_24)
+[![IMAGE ALT TEXT HERE](https://i.ytimg.com/vi/wvbV75Tw_24/maxresdefault.jpg)](https://www.youtube.com/watch?v=wvbV75Tw_24)
 
 
 ## Requirements
