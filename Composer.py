@@ -2,6 +2,7 @@ from __future__ import absolute_import, print_function
 
 from MidiFactory import createMidi
 import os
+from sys import platform
 from math import ceil
 
 def extendScale(scale,times):
@@ -50,4 +51,9 @@ def compose(notes,durations,scale, new_midi_path, new_musicxml_path):
     composition = toList(durations,notes,scale)
     print(composition)
     createMidi(new_midi_path, composition)
-    os.system("musescore "+ new_midi_path +" -o " + new_musicxml_path)
+    if platform in ["win32","cygwin"]:
+      os.system("MuseScore3.exe "+ new_midi_path +" -o " + new_musicxml_path)
+    elif platform == "darwin":
+      os.system("export QT_QPA_PLATFORM=offscreen && mscore "+ new_midi_path +" -o " + new_musicxml_path)
+    else:
+      os.system("export QT_QPA_PLATFORM=offscreen && musescore "+ new_midi_path +" -o " + new_musicxml_path)
