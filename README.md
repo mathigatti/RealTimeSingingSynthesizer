@@ -13,10 +13,18 @@ Real Time Singing Synthesizer project made from sinsy-NG. The idea was to genera
 
 ## Installation
 
-Software contained in synthesisSoftware must be installed. 
+Software contained in synthesisSoftware must be installed.
 
 - libespeag-NG (Install this first)
 - Sinsy-NG (Install this second)
+
+You can check the Colab notebook for a detailed guide about how to install it on Ubuntu.
+
+### Try it on Colab
+
+If you want to check it quickly you can try it online [here](https://colab.research.google.com/drive/10FgnJcvbPNpp8W2OjrLLon_v719chtxj?usp=sharing).
+
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/10FgnJcvbPNpp8W2OjrLLon_v719chtxj?usp=sharing)
 
 ## Usage
 
@@ -53,3 +61,7 @@ python main.py lyrics="hola hola hola" lang=es
 ```
 python main.py notes=0,0,2 lyrics="hello good morning" dur=1,1,2 lang=en file="output.wav" tempo=80
 ```
+
+## Support my work
+
+Mathias's open-source projects are supported by [his Patreon](https://www.patreon.com/mathigatti). If you found this project helpful, any monetary contributions to the Patreon are appreciated and will be put to good creative use.
