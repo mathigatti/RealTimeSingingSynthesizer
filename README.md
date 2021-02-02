@@ -64,4 +64,4 @@ python main.py notes=0,0,2 lyrics="hello good morning" dur=1,1,2 lang=en file="o
 
 ## Support my work
 
-Mathias's open-source projects are supported by [his Patreon](https://www.patreon.com/mathigatti). If you found this project helpful, any monetary contributions to the Patreon are appreciated and will be put to good creative use.
+If you want to help me to keep going developing and maintaining open-source projects you can contribute buying me some [ko-fi](https://ko-fi.com/mathigatti).
