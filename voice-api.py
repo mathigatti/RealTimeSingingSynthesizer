@@ -4,16 +4,9 @@ import os
 from starlette.applications import Starlette
 from starlette.responses import FileResponse
 import uvicorn
-from pydub import AudioSegment
 from midi2voice.midi2xml import midi2xml
 
 from Voice import renderize_voice, compose
-
-def wav2mp3(path_to_file):
-    final_audio = AudioSegment.from_wav(file=path_to_file)
-    path_to_file = path_to_file.replace(".wav",".mp3")
-    final_audio.export(path_to_file, format="mp3")
-    return path_to_file 
 
 app = Starlette(debug=False)
 
@@ -43,7 +36,7 @@ async def voice(request):
     filename = 'output.wav'
 
     renderize_voice(filename,lyrics,notes,dur,tempo,scale,lang)
-    return FileResponse(wav2mp3(filename), headers=response_header)
+    return FileResponse(filename, headers=response_header)
 
 
 @app.route('/midi', methods=['GET','POST'])
@@ -63,7 +56,7 @@ async def midi(request):
     root_note = params.get('root', 0) # C is the root note
     notes = list(map(lambda x: x + root_note,notes))
 
-    filename = 'output.mid'
+    filename = 'voice.mid'
     compose(notes, dur, scale, filename)
     return FileResponse(filename, headers=response_header)
 
@@ -90,28 +83,6 @@ async def sheet(request):
     midi2xml(lyrics, MIDI_PATH, filename, tempo)
 
     return FileResponse(filename, headers=response_header)
-
-@app.route('/text', methods=['GET','POST'])
-async def texto(request):
-    textos = ["hola solcha esto \n es un texto",
-            "esto es otro \n texto, tiene comas",
-            "el sombrero mágico \n esta hablando por \n allá atrás, le \n gustan las tíldes"]
-    return {"texto": choice(textos)}
-
-@app.route('/random-translate',methods=['GET','POST'])
-async def random_translate(request):
-    if request.method == 'GET':
-        params = request.query_params
-    elif request.method == 'POST':
-        params = await request.json()
-
-    if 'texto' in params.keys():
-        langs = ['en','es','de','zh']
-        #response = gs.translate(params['texto'], choice(langs))
-        response = params['texto']
-        return {"texto": response}
-    else:
-        return 'por favor mandame un json con el campo "texto"'
 
 if __name__ == '__main__':
     uvicorn.run(app, host='0.0.0.0', port=int(os.environ.get('PORT', 8080)))

@@ -13,11 +13,7 @@ def renderize_voice(output_name, lyrics, notes, durations, tempo, scale, languag
 
 	os.system("LD_LIBRARY_PATH=/usr/lib synthesisSoftware/Sinsy-NG-0.0.1/build/sinsyNG -t "+str(tempo)+" -m "+language_code+" -o " + output_name + " " + VOICE_XML_PATH)
 
-
 def create_midi(midi_file, composition):
-    print("Composition:")
-    print(composition)
-
     MyMIDI = MIDIFile(1)
 
     track = 0
@@ -71,11 +67,5 @@ def to_list(rhythm, melody, scale):
     return composition
 
 def compose(notes, durations, scale, new_midi_path):
-
-    print(notes)
-    print(durations)
-    print(scale)
-
     composition = to_list(durations,notes,scale)
-    print(composition)
     create_midi(new_midi_path, composition)

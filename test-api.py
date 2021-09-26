@@ -1,6 +1,5 @@
 import requests
 import json
-import sys
 
 def voice(notes=[0,1,2,3,4,5,4,3,2,1,0], dur=[1], lyrics="oo ", file="song.mp3", octave=6, lang="en", tempo=120):
   headers = {

@@ -76,9 +76,10 @@ RUN cp -r /RealTimeSingingSynthesizer/synthesisSoftware/libespeak-NG/espeak-ng-d
 
 RUN apt-get -y update && apt-get -y install gcc && apt-get -y install libsndfile1-dev && apt-get -y install ffmpeg
 
-RUN python3 -m pip install pydub starlette uvicorn ujson aiofiles
+RUN python3 -m pip install starlette uvicorn ujson aiofiles
 
 ADD Voice.py .
+
 ADD voice-api.py . 
 
 ENTRYPOINT ["python3", "-X", "utf8", "voice-api.py"]
