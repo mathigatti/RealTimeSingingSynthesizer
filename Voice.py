@@ -5,7 +5,7 @@ from midi2voice.midi2xml import midi2xml
 
 FILES_ROOT = "."
 
-def renderize_voice(outputName, lyrics, notes, durations, tempo, scale, languageCode):
+def renderize_voice(output_name, lyrics, notes, durations, tempo, scale, language_code):
 	MIDI_PATH = os.path.join(FILES_ROOT, "voice.mid")
 	VOICE_XML_PATH= os.path.join(FILES_ROOT, "voice.xml")
 
@@ -15,7 +15,7 @@ def renderize_voice(outputName, lyrics, notes, durations, tempo, scale, language
 
 	midi2xml(lyrics, MIDI_PATH, VOICE_XML_PATH, tempo)
 
-	os.system("LD_LIBRARY_PATH=/usr/lib synthesisSoftware/Sinsy-NG-0.0.1/build/sinsyNG -t "+str(tempo)+" -m "+languageCode+" -o " + outputName + " " + VOICE_XML_PATH)
+	os.system("LD_LIBRARY_PATH=/usr/lib synthesisSoftware/Sinsy-NG-0.0.1/build/sinsyNG -t "+str(tempo)+" -m "+language_code+" -o " + output_name + " " + VOICE_XML_PATH)
 
 def tokenize(text):
 	text_syllables = clean_text(text)
