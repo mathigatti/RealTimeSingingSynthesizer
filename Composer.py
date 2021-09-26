@@ -1,18 +1,37 @@
 from __future__ import absolute_import, print_function
 
-from MidiFactory import createMidi
 import os
-from sys import platform
 from math import ceil
 
-def extendScale(scale,times):
+from midiutil import MIDIFile
+
+def create_midi(midi_file, composition):
+    print("Composition:")
+    print(composition)
+
+    MyMIDI = MIDIFile(1)
+
+    track = 0
+    channel = 0
+    for note in composition:
+        pitch = note[0]
+        duration = note[1] # In beats
+        volume   = note[2] # 0-127, as per the MIDI standard
+        time = note[3]
+
+        MyMIDI.addNote(track, channel, pitch, time, duration, volume)
+
+    with open(midi_file, "wb") as output_file:
+        MyMIDI.writeFile(output_file)
+
+def extend_scale(scale,times):
     scaleAux = scale[:]
     for i in range(1,times):
         for note in scaleAux:
             scale.append(note+12*i)
     return scale
 
-def matchListsSize(rhythm,melody):
+def match_lists_size(rhythm,melody):
     n_rhythm =len(rhythm)
     n_melody = len(melody)
     if n_rhythm < n_melody:
@@ -22,15 +41,15 @@ def matchListsSize(rhythm,melody):
 
     return rhythm,melody
 
-def toList(rhythm, melody, scale):
+def to_list(rhythm, melody, scale):
 
-    scale = extendScale(scale,2)
+    scale = extend_scale(scale,2)
     scaleSize = len(scale)
 
     volume = 100
     baseNote = 60
 
-    rhythm, melody = matchListsSize(rhythm,melody)
+    rhythm, melody = match_lists_size(rhythm,melody)
 
     composition = []
     time = 0
@@ -42,18 +61,12 @@ def toList(rhythm, melody, scale):
 
     return composition
 
-def compose(notes,durations,scale, new_midi_path, new_musicxml_path):
+def compose(notes, durations, scale, new_midi_path):
 
     print(notes)
     print(durations)
     print(scale)
 
-    composition = toList(durations,notes,scale)
+    composition = to_list(durations,notes,scale)
     print(composition)
-    createMidi(new_midi_path, composition)
-    if platform in ["win32","cygwin"]:
-      os.system("MuseScore3.exe "+ new_midi_path +" -o " + new_musicxml_path)
-    elif platform == "darwin":
-      os.system("export QT_QPA_PLATFORM=offscreen && mscore "+ new_midi_path +" -o " + new_musicxml_path)
-    else:
-      os.system("export QT_QPA_PLATFORM=offscreen && musescore "+ new_midi_path +" -o " + new_musicxml_path)
+    create_midi(new_midi_path, composition)

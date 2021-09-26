@@ -1,24 +1,27 @@
 import os
 
-from Constants import *
 from Composer import compose
-from VoiceSpecificator import generateVoiceSpecification
+from midi2voice.midi2xml import midi2xml
 
-def renderizeVoice(outputName,lyrics,notes,durations,tempo,scale,languageCode):
+FILES_ROOT = "."
 
-	compose(notes,durations,scale,LAST_MIDI,VOICE_XML_ORIGINAL)
+def renderize_voice(outputName, lyrics, notes, durations, tempo, scale, languageCode):
+	MIDI_PATH = os.path.join(FILES_ROOT, "voice.mid")
+	VOICE_XML_PATH= os.path.join(FILES_ROOT, "voice.xml")
+
+	compose(notes, durations, scale, MIDI_PATH)
 
 	lyrics = tokenize(lyrics)
 
-	generateVoiceSpecification(lyrics,tempo,VOICE_XML_ORIGINAL,VOICE_XML_PROCESSED)
+	midi2xml(lyrics, MIDI_PATH, VOICE_XML_PATH, tempo)
 
-	os.system("LD_LIBRARY_PATH=/usr/lib synthesisSoftware/Sinsy-NG-0.0.1/build/sinsyNG -t "+str(tempo)+" -m "+languageCode+" -o " + outputName + " " + VOICE_XML_PROCESSED)
+	os.system("LD_LIBRARY_PATH=/usr/lib synthesisSoftware/Sinsy-NG-0.0.1/build/sinsyNG -t "+str(tempo)+" -m "+languageCode+" -o " + outputName + " " + VOICE_XML_PATH)
 
 def tokenize(text):
-	textSyllables = cleanText(text)
-	return list(filter(lambda x: len(x) > 0, textSyllables.replace(" ", "-").split("-")))
+	text_syllables = clean_text(text)
+	return list(filter(lambda x: len(x) > 0, text_syllables.replace(" ", "-").split("-")))
 
-def cleanText(text):
+def clean_text(text):
 
 	text.replace("\n"," ")
 	text = text.lower()
