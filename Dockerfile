@@ -78,7 +78,6 @@ RUN apt-get -y update && apt-get -y install gcc && apt-get -y install libsndfile
 
 RUN python3 -m pip install pydub starlette uvicorn ujson aiofiles
 
-ADD Composer.py .
 ADD Voice.py .
 ADD voice-api.py . 
 

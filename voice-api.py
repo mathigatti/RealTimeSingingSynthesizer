@@ -5,9 +5,9 @@ from starlette.applications import Starlette
 from starlette.responses import FileResponse
 import uvicorn
 from pydub import AudioSegment
+from midi2voice.midi2xml import midi2xml
 
-from Composer import compose
-from Voice import renderizeVoice
+from Voice import renderize_voice, compose
 
 def wav2mp3(path_to_file):
     final_audio = AudioSegment.from_wav(file=path_to_file)
@@ -42,7 +42,7 @@ async def voice(request):
     # hardcodear filename
     filename = 'output.wav'
 
-    renderizeVoice(filename,lyrics,notes,dur,tempo,scale,lang)
+    renderize_voice(filename,lyrics,notes,dur,tempo,scale,lang)
     return FileResponse(wav2mp3(filename), headers=response_header)
 
 
@@ -69,7 +69,26 @@ async def midi(request):
 
 @app.route('/sheet', methods=['GET','POST'])
 async def sheet(request):
-    filename="tmp/last_voice.xml"
+    if request.method == 'GET':
+        params = request.query_params
+    elif request.method == 'POST':
+        params = await request.json()
+
+    lyrics = params.get('lyrics', 'oo ')
+    notes = params.get('notes', [0])
+    octave = params.get("octave", 6)
+    dur = params.get('dur', [1])
+    tempo = params.get('tempo', 120)
+    lang = params.get('lang', 'es')
+    scale = params.get('scale', [0,2,4,5,7,9,11])
+    root_note = params.get('root', 0) # C is the root note
+    notes = list(map(lambda x: x + root_note,notes))
+
+    MIDI_PATH = "voice.mid"
+    filename="voice.xml"
+    compose(notes, dur, scale, MIDI_PATH)
+    midi2xml(lyrics, MIDI_PATH, filename, tempo)
+
     return FileResponse(filename, headers=response_header)
 
 @app.route('/text', methods=['GET','POST'])
