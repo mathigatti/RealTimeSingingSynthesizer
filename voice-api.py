@@ -22,7 +22,7 @@ async def voice(request):
     elif request.method == 'POST':
         params = await request.json()
 
-    lyrics = params.get('lyrics', 'oo ')
+    lyrics = params.get('lyrics', ['oo '])
     notes = params.get('notes', [0])
     octave = params.get("octave", 6)
     dur = params.get('dur', [1])
