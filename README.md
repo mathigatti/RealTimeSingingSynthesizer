@@ -20,15 +20,28 @@ Software contained in synthesisSoftware must be installed.
 
 You can check the Colab notebook for a detailed guide about how to install it on Ubuntu.
 
+## Usage
+
 ### Try it on Colab
 
 If you want to check it quickly you can try it online [here](https://colab.research.google.com/drive/10FgnJcvbPNpp8W2OjrLLon_v719chtxj?usp=sharing).
 
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/10FgnJcvbPNpp8W2OjrLLon_v719chtxj?usp=sharing)
 
-## Usage
+### Try it on Docker
 
-You can try `main.py` script as a small singing synthesis example. After running this an output wav file will be generated containing the specified vocals.
+Build it
+- docker build . -t voice-synth
+
+Run it
+
+- docker run --rm --network="host" -p 8080:8080 -e PORT=8080 voice-synth
+
+Once that's done you can try `test-api.py` script as a small singing synthesis example. After running this an output wav file will be generated containing the specified vocals.
+
+```
+python test-api.py 
+```
 
 All the parameters are optional, they contain a default value in case they are not specified. You can specify them in any order when running the program in the command line.
 
@@ -42,25 +55,9 @@ The scale is C major by default, it's hardcoded in the main.py file and can be m
 - lang: The language code, "es" for spanish and "en" for english
 There are several languages supported, You can check those [here](http://espeak.sourceforge.net/languages.html)
 
-
-- tempo: The tempo in BPM, 100 by default
+- tempo: The tempo in BPM
 
 - file: The name of the output file
-
-### Usage examples
-1. All the default values are used generating a single note audio file which says "Ooh" in spanish.
-```
-python main.py 
-```
-2. Example specifying only lyrics and language.
-```
-python main.py lyrics="hola hola hola" lang=es
-
-```
-3. Using all the parameters.
-```
-python main.py notes=0,0,2 lyrics="hello good morning" dur=1,1,2 lang=en file="output.wav" tempo=80
-```
 
 ## Support my work
 
