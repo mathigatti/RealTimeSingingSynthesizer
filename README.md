@@ -15,7 +15,7 @@ Real Time Singing Synthesizer project made from sinsy-NG. The idea was to genera
 
 Software contained in synthesisSoftware must be installed.
 
-- libespeag-NG (Install this first)
+- libespeak-NG (Install this first)
 - Sinsy-NG (Install this second)
 
 You can check the Colab notebook for a detailed guide about how to install it on Ubuntu.
@@ -52,8 +52,7 @@ The scale is C major by default, it's hardcoded in the main.py file and can be m
 
 - lyrics: The text to be synthesized. Each word is mapped to one note from the "dur" and "notes" parameters
 
-- lang: The language code, "es" for spanish and "en" for english
-There are several languages supported, You can check those [here](http://espeak.sourceforge.net/languages.html)
+- lang: The language code, "es" for spanish and "en" for english. There are several languages supported, You can check them [here](http://espeak.sourceforge.net/languages.html)
 
 - tempo: The tempo in BPM
 
